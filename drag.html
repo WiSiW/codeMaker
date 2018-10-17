@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>目录列表</title>
+    <!--{% include 'web/pages/script.html' %}-->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery.drag.js"></script>
+    <script>
+//        (function () {
+            window.version =+ new Date();
+            document.writeln("<link href='css/style.css?v=" + version +"' rel='stylesheet'/>");
+            document.writeln("<link href='css/drag.css?v=" + version +"' rel='stylesheet'/>");
+    </script>
+</head>
+<body ng-controller="me.ctrl">
+    <div class="content">
+        <!--主视图-->
+        <div class="main-index"></div>
+        <div class="main-content">
+            <div id="content-left" class="content-left-right">
+                <div id="content-show" class="content-show-html-css-js" contenteditable="false">
+                    <iframe id="show-content"></iframe>
+                </div>
+                <div id="show-css-line" class="content-show-html-css-js-line"></div>
+                <div id="content-css" class="content-show-html-css-js" contenteditable="true">
+                    <pre>body{</pre>
+                    <pre>    overflow: hidden;</pre>
+                    <pre>}</pre>
+                    <pre>.content{</pre>
+                    <pre>    position: absolute;</pre>
+                    <pre>    height: auto;</pre>
+                    <pre>    top: 0;</pre>
+                    <pre>    bottom: 0;</pre>
+                    <pre>    left: 0;</pre>
+                    <pre>    right: 0;</pre>
+                    <pre>    overflow: auto;</pre>
+                    <pre>}</pre>
+                    <pre>.content::-webkit-scrollbar{</pre>
+                    <pre>    display: none;</pre>
+                    <pre>}</pre>
+                    <pre>.main{</pre>
+                    <pre>    min-width: 1000px;</pre>
+                    <pre>    height: auto;</pre>
+                    <pre>    position: absolute;</pre>
+                    <pre>    top: 100px;</pre>
+                    <pre>    left: 200px;</pre>
+                    <pre>    right: 200px;</pre>
+                    <pre>    margin-bottom: 100px;</pre>
+                    <pre>}</pre><pre>.main-index{</pre>
+                    <pre>    width: 300px;</pre>
+                    <pre>    height: 100%;</pre>
+                    <pre>    position: relative;</pre>
+                    <pre>    float: left;</pre>
+                    <pre>    background-color: #E8F2FE;</pre>
+                    <pre>}</pre><pre>.main-content{</pre>
+                    <pre>    width: -webkit-calc(100% - 300px);</pre>
+                    <pre>    height: 100%;</pre>
+                    <pre>    position: relative;</pre>
+                    <pre>    float: left;</pre>
+                    <pre>    background-color: #E8F2FE;</pre>
+                    <pre>    z-index: 5;</pre>
+                    <pre>}</pre>
+                    <pre>.main-content div{</pre>
+                    <pre>    float: left;</pre>
+                    <pre>}</pre>
+                    <pre>.content-left-right{</pre>
+                    <pre>    width: -webkit-calc(50% - 1px);</pre>
+                    <pre>    height: 100%;</pre>
+                    <pre>    background-color: #ffffff;</pre>
+                    <pre>    z-index: 6;</pre>
+                    <pre>}</pre>
+                    <pre>#content-left{</pre>
+                    <pre>}</pre>
+                    <pre>#content-right{</pre>
+                    <pre>    left: 2px;</pre>
+                    <pre>}</pre>
+                    <pre>#left-right-line{</pre>
+                    <pre>    width: 2px;</pre>
+                    <pre>    height: 100%;</pre>
+                    <pre>    background-color: #E8F2FE;</pre>
+                    <pre>    position: absolute;</pre>
+                    <pre>    left: -webkit-calc(50% - 1px);</pre>
+                    <pre>    z-index: 8;</pre>
+                    <pre>}</pre>
+                    <pre>.content-show-html-css-js{</pre>
+                    <pre>    width: 100%;</pre>
+                    <pre>    background-color: #ffffff;</pre>
+                    <pre>    z-index: 10;</pre>
+                    <pre>    overflow: auto;</pre>
+                    <pre>    /*padding: 10px 0 10px 10px;*/</pre>
+                    <pre>}</pre>
+                    <pre>.content-show-html-css-js-line{</pre>
+                    <pre>    width: 100%;</pre>
+                    <pre>    height: 2px;</pre>
+                    <pre>    background-color: #E8F2FE;</pre>
+                    <pre>    position: absolute;</pre>
+                    <pre>    z-index: 12;</pre>
+                    <pre>}</pre>
+                    <pre>#content-show{</pre>
+                    <pre>    height: -webkit-calc(75% - 1px);</pre>
+                    <pre>}</pre>
+                    <pre>#show-css-line{</pre>
+                    <pre>    top: -webkit-calc(75% - 1px);</pre>
+                    <pre>}</pre>
+                    <pre>#content-css{</pre>
+                    <pre>    height: -webkit-calc(25% - 1px);</pre>
+                    <pre>    top: 2px;</pre>
+                    <pre>}</pre>
+                    <pre>#content-html{</pre>
+                    <pre>    height: -webkit-calc(50% - 1px);</pre>
+                    <pre>}</pre>
+                    <pre>#html-js-line{</pre>
+                    <pre>    top: -webkit-calc(50% - 1px);</pre>
+                    <pre>}</pre>
+                    <pre>#content-js{</pre>
+                    <pre>    height: -webkit-calc(50% - 1px);</pre>
+                    <pre>    top: 2px;</pre>
+                    <pre>}</pre>
+                </div>
+            </div>
+            <div id="left-right-line"></div>
+            <div id="content-right" class="content-left-right">
+                <div id="content-html" class="content-show-html-css-js" contenteditable="true">
+                    <pre><</pre><pre>div class="content"></pre>
+                    <pre><</pre><pre>div class="main-index"><</pre><pre>/div></pre>
+                    <pre><</pre><pre>div class="main-content"></pre>
+                    <pre><</pre><pre>div id="content-left" class="content-left-right"></pre>
+                    <pre><</pre><pre>div id="content-show" class="content-show-html-css-js" contenteditable="false"></pre>
+                    <pre><</pre><pre>iframe id="show-content"><</pre><pre>/iframe></pre>
+                    <pre><</pre><pre>/div></pre>
+                    <pre><</pre><pre>div id="show-css-line" class="content-show-html-css-js-line"><</pre><pre>/div></pre>
+                    <pre><</pre><pre>div id="content-css" class="content-show-html-css-js" contenteditable="true"><</pre><pre>/div></pre>
+                    <pre><</pre><pre>/div></pre>
+                    <pre><</pre><pre>div id="left-right-line"><</pre><pre>/div></pre>
+                    <pre><</pre><pre>div id="content-right" class="content-left-right"></pre>
+                    <pre><</pre><pre>div id="content-html" class="content-show-html-css-js" contenteditable="true"><</pre><pre>/div></pre>
+                    <pre><</pre><pre>div id="html-js-line" class="content-show-html-css-js-line"><</pre><pre>/div></pre>
+                    <pre><</pre><pre>div id="content-js" class="content-show-html-css-js" contenteditable="true"><</pre><pre>/div></pre>
+                    <pre><</pre><pre>/div></pre>
+                    <pre><</pre><pre>/div></pre>
+                    <pre><</pre><pre>/div></pre>
+                </div>
+                <div id="html-js-line" class="content-show-html-css-js-line"></div>
+                <div id="content-js" class="content-show-html-css-js" contenteditable="true"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    document.writeln("<script src='drag.js?v=" + version +"'></scr" + "ipt>");
+</script>
+</html>
